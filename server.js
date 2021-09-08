@@ -1,5 +1,5 @@
 const express = require("express");
-const fs = require("fs");
+// const fs = require("fs");
 
 
  const app = express();
@@ -12,8 +12,8 @@ const fs = require("fs");
  app.use(express.static('public'));
 
 
- require("./Develop/routes/apiRoutes.js")(app);
- require("./Develop/routes/htmlRoutes.js")(app);
+ require("./routes/apiRoutes")(app);
+ require("./routes/htmlRoutes")(app);
 
  app.listen(PORT, function() {
      console.log("App listening on PORT: " + PORT);
