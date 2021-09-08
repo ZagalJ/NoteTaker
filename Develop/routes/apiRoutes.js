@@ -1,10 +1,11 @@
-const path = require ("path");
+const notesData = require ("../db/db.json");
 
 module.exports = function(app){
-    app.get("/notes", function(req,res){
-        res.sendFile(path.join(__dirname, "../public/notes.html"));
+    app.get("/api/notes", function(req,res){
+        res.json(notesData);
     });
-    app.get("/*", function(req,res){
-        res.sendFile(path.join(__dirname, "../public/index.html"));
-    })
+    app.post("/api/notes", function(req,res){
+        notesData.push(req.body);
+        res.json(true);
+    });
 }
